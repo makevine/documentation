@@ -2,6 +2,7 @@
 
 ### Documentation
 
+ * [API Guide](api-guide.md)
  * TODO: FAQ
 
 ### Examples
