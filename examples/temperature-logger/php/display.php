@@ -1,23 +1,21 @@
 <?php
-/**
- * Reads the most recent temperature from the channel and displays it
- */
+#
+# Writes simulated temperature readings
+#
+# Requires a Makevine channel. Create one with:
+#
+#  $ curl http://makevine.com/create/desiredusername-temperature-example
+#
+# After creating a channel, replace the CHANNEL and KEY variables below
+#
 
-/*
-Replace these values with your own.
-
-Create a new channel with:
-
-    $ curl http://makevine.com/create/example-check-temperature
-
-*/
 $CHANNEL = 'example-check-temperature';
-$RWKEY   = 'REPLACE_THIS';
+$KEY     = 'REPLACE_THIS';
 
 
 // Read the temperature value from the channel every 5 seconds
 while (true) {
-    $url = sprintf("http://makevine.com/%s/%s", $CHANNEL, $RWKEY);
+    $url = sprintf("http://makevine.com/%s/%s", $CHANNEL, $KEY);
 
     // The return value from this will be a string that looks like:
     // message-id^value
@@ -33,8 +31,7 @@ while (true) {
 
     print "Last known temperature: " . $temperature . PHP_EOL;
 
-    // Always use a sleep call when making API calls in a loop to avoid unnecessary
-    // server load. If you make requests too quickly you will receive a rate limit
-    // error
+    // Always use a sleep call when making API calls in a loop. If you make requests
+    // too quickly you will receive a rate limit error
     sleep(5);
 }

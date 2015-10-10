@@ -1,19 +1,18 @@
 <?php
-/**
- * Simulates a temperature sensor and writes data to a Makevine channel
- *
- */
+#
+# Writes simulated temperature readings
+#
+# Requires a Makevine channel. Create one with:
+#
+#  $ curl http://makevine.com/create/desiredusername-temperature-example
+#
+# After creating a channel, replace the CHANNEL and KEY variables below
+#
+# NOTE: this script requires the read/write key (starts with rw-)
+#
 
-/*
-Replace these values with your own.
-
-Create a new channel with:
-
-    $ curl http://makevine.com/create/example-check-temperature
-
-*/
-$CHANNEL = 'example-check-temperature';
-$RWKEY   = 'REPLACE_THIS';
+$CHANNEL = 'username-temperature-example';
+$KEY     = 'REPLACE_THIS';
 
 // No configuration necessary past here
 
@@ -22,7 +21,7 @@ $temperature = rand(0, 100);
 
 // Send to the channel
 print "[sensor] Sending: " . $temperature . PHP_EOL;
-sendMessageToChannel($temperature, $CHANNEL, $RWKEY);
+sendMessageToChannel($temperature, $CHANNEL, $KEY);
 
 
 /**
