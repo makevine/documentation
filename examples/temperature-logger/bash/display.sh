@@ -16,9 +16,7 @@ KEY="REPLACE_THIS"
 
 # Read the temperature value from the channel every 5 seconds
 while true; do
-    DATA=`curl --silent http://makevine.com/${CHANNEL}/${KEY}`
-
-    TEMPERATURE=$(echo "$DATA" | cut -d^ -f 2)
+    TEMPERATURE=`curl --silent http://makevine.com/${CHANNEL}/${KEY}`
 
     echo "Last known temperature: ${TEMPERATURE}"
 

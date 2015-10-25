@@ -30,12 +30,15 @@ if (!$since) {
 // Pause for a while to wait for clients to respond
 print "Sent message ID $since, waiting for responses..." . PHP_EOL;
 print PHP_EOL;
-sleep(10);
+sleep(5);
 
 // Read responses until we don't find any more
 while (true) {
     // We only care about responses that were written after we sent our command
-    $url = sprintf("http://makevine.com/%s/%s?since=%s", $CHANNEL, $RWKEY, $since);
+    // Set id=true in the URL to include the message ID in the response. This will
+    // be used to make sure we don't reprocess messages we've already seen.
+    $url = sprintf("http://makevine.com/%s/%s?since=%s&id=true", $CHANNEL, $RWKEY, $since);
+
     // The return value from this will be a string that looks like:
     // message-id^value or blank if no messages are available
     $mostRecentMessageData = file_get_contents($url);
