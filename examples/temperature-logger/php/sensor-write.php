@@ -47,7 +47,6 @@ function sendMessageToChannel($message, $channel, $rwKey) {
     );
 
     $url = sprintf("http://makevine.com/%s/%s", $channel, $rwKey);
-    print $url . "\n";
 
     // We'll get back the message ID for the message we just sent. We'll use this
     // to make sure we only find messages created after we sent the command
