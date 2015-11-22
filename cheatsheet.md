@@ -1,4 +1,4 @@
-# Makevine Cheat Sheet
+# Makevine Cheatsheet
 
 See the [API Guide](api-guide.md) for more information and detailed examples. 
 
